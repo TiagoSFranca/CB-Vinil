@@ -1,4 +1,5 @@
-﻿using CBVinil.Persistence;
+﻿using CBVinil.Application.Interfaces;
+using CBVinil.Persistence;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,17 @@ namespace CBVinil.API
                 {
                     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "Ocorreu um erro durante a migração ou inicialização da base de dados.");
+                }
+
+                try
+                {
+                    var servico = scope.ServiceProvider.GetService<ISpotifyService>();
+                    servico.PopularDiscos().GetAwaiter().GetResult();
+                }
+                catch (Exception ex)
+                {
+                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "Ocorreu um erro durante o consumo da API do Spotify para popular os Discos.");
                 }
             }
 

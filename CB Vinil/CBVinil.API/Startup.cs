@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using CBVinil.API.Filters;
 using CBVinil.Application.GenerosMusicais.Queries.GetGenerosMusicais;
+using CBVinil.Application.Interfaces;
 using CBVinil.Application.Settings;
 using CBVinil.Application.Settings.Models;
 using CBVinil.Application.Vendas.Commands.VenderDiscos;
+using CBVinil.Infrastructure.Services;
 using CBVinil.Persistence;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -14,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
 
@@ -21,12 +24,15 @@ namespace CBVinil.API
 {
     public class Startup
     {
+        private const string _appSettingsSectionName = "AppSettings";
+        private const string _spotifySettingsSectionName = "SpotifySettings";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
 
             _appSettingsSection = Configuration
-                .GetSection("AppSettings");
+                .GetSection(_appSettingsSectionName);
 
             _appSettings = _appSettingsSection.Get<AppSettings>();
         }
@@ -40,13 +46,16 @@ namespace CBVinil.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add AutoMapper
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
 
-            // Add MediatR
+            #region Dependency Injections
+
+            services.TryAddTransient<ISpotifyService, SpotifyService>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+
+            #endregion
+
             services.AddMediatR(typeof(GetGenerosMusicaisQuery).GetTypeInfo().Assembly);
 
             services.AddCors();
@@ -57,11 +66,12 @@ namespace CBVinil.API
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<VenderDiscosCommandValidator>());
 
             services.AddDbContext<CBVinilContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("CBVinilConnection")));
+                options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("CBVinilConnection")));
 
 
-            services
-                   .Configure<AppSettings>(_appSettingsSection);
+            services.Configure<AppSettings>(_appSettingsSection);
+
+            services.Configure<SpotifySettings>(Configuration.GetSection(_spotifySettingsSectionName));
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

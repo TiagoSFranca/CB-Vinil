@@ -17,6 +17,12 @@ namespace CBVinil.Application.Vendas.Commands.VenderDiscos
         private readonly CBVinilContext _context;
         private readonly IMapper _mapper;
 
+        public VenderDiscosCommandHandler(CBVinilContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
         public async Task<VendaViewModel> Handle(VenderDiscosCommand request, CancellationToken cancellationToken)
         {
             var idDiscos = request.Discos.Select(e => e.IdDisco).Distinct().ToList();

@@ -20,6 +20,14 @@ namespace CBVinil.Persistence.EntityConfigurations
             builder.Property(e => e.Preco)
                 .IsRequired();
 
+            builder.Property(e => e.Artistas)
+                .IsRequired()
+                .HasMaxLength(512);
+
+            builder.Property(e => e.CodSpotify)
+                .IsRequired()
+                .HasMaxLength(64);
+
             builder.HasOne(e => e.GeneroMusical)
                 .WithMany(p => p.Discos)
                 .HasForeignKey(e => e.IdGeneroMusical)

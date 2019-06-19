@@ -13,6 +13,8 @@ namespace CBVinil.Domain.Entities
         public int IdGeneroMusical { get; set; }
         public string Nome { get; set; }
         public decimal Preco { get; set; }
+        public string Artistas { get; set; }
+        public string CodSpotify { get; set; }
 
         public virtual GeneroMusical GeneroMusical { get; set; }
         public virtual ICollection<ItemVenda> ItensVenda { get; set; }
