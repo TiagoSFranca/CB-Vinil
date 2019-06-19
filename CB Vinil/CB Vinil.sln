@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{39765921-F28C-435C-9482-9AE6215A697D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Presentation", "0 - Presentation", "{3514559D-FE00-4245-99C6-B336CCD7C4DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Core", "1 - Core", "{7975CCB0-7960-4FE0-969C-0C6DFB07108B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Infra", "2 - Infra", "{B63C33DB-2AF8-4CED-BF9A-A2803AFB5B28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBVinil.Domain", "CBVinil.Domain\CBVinil.Domain.csproj", "{986FCC70-1C66-4C29-8813-B2C95EDA7A78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBVinil.Application", "CBVinil.Application\CBVinil.Application.csproj", "{F8B7FC13-FA0E-4242-BBCD-4527B0D62BCD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBVinil.Persistence", "CBVinil.Persistence\CBVinil.Persistence.csproj", "{211A0275-6116-4FA7-9BC1-F86AABC57B4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBVinil.API", "CBVinil.API\CBVinil.API.csproj", "{EEF3A291-903F-4AF8-BDA2-B2ACE5E57409}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{986FCC70-1C66-4C29-8813-B2C95EDA7A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986FCC70-1C66-4C29-8813-B2C95EDA7A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986FCC70-1C66-4C29-8813-B2C95EDA7A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986FCC70-1C66-4C29-8813-B2C95EDA7A78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8B7FC13-FA0E-4242-BBCD-4527B0D62BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8B7FC13-FA0E-4242-BBCD-4527B0D62BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8B7FC13-FA0E-4242-BBCD-4527B0D62BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8B7FC13-FA0E-4242-BBCD-4527B0D62BCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{211A0275-6116-4FA7-9BC1-F86AABC57B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{211A0275-6116-4FA7-9BC1-F86AABC57B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211A0275-6116-4FA7-9BC1-F86AABC57B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{211A0275-6116-4FA7-9BC1-F86AABC57B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF3A291-903F-4AF8-BDA2-B2ACE5E57409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF3A291-903F-4AF8-BDA2-B2ACE5E57409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF3A291-903F-4AF8-BDA2-B2ACE5E57409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF3A291-903F-4AF8-BDA2-B2ACE5E57409}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3514559D-FE00-4245-99C6-B336CCD7C4DD} = {39765921-F28C-435C-9482-9AE6215A697D}
+		{7975CCB0-7960-4FE0-969C-0C6DFB07108B} = {39765921-F28C-435C-9482-9AE6215A697D}
+		{B63C33DB-2AF8-4CED-BF9A-A2803AFB5B28} = {39765921-F28C-435C-9482-9AE6215A697D}
+		{986FCC70-1C66-4C29-8813-B2C95EDA7A78} = {7975CCB0-7960-4FE0-969C-0C6DFB07108B}
+		{F8B7FC13-FA0E-4242-BBCD-4527B0D62BCD} = {7975CCB0-7960-4FE0-969C-0C6DFB07108B}
+		{211A0275-6116-4FA7-9BC1-F86AABC57B4B} = {B63C33DB-2AF8-4CED-BF9A-A2803AFB5B28}
+		{EEF3A291-903F-4AF8-BDA2-B2ACE5E57409} = {3514559D-FE00-4245-99C6-B336CCD7C4DD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4218FD8-34C8-43E9-B8A9-FB12195D8991}
+	EndGlobalSection
+EndGlobal
