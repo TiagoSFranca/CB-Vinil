@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CBVinil.Application.Discos.Models;
 using CBVinil.Application.Paginacoes.Models;
+using CBVinil.Common.Constants;
 using CBVinil.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +42,7 @@ namespace CBVinil.Application.Discos.Queries.GetDiscos
             if (!string.IsNullOrEmpty(request.NomeGeneroMusical))
                 query = query.Where(e => e.GeneroMusical.Nome.ToLower().Contains(request.NomeGeneroMusical.ToLower()));
 
-            var paginacao = request.Paginacao ?? new PaginacaoViewModel(1, 10);
+            var paginacao = request.Paginacao ?? new PaginacaoViewModel(PaginacaoConstants.PaginaDefault, PaginacaoConstants.ItensPorPaginaDefault);
 
             var resultado = await query.Skip((paginacao.Pagina - 1) * paginacao.ItensPorPagina).Take(paginacao.ItensPorPagina).ToListAsync();
 

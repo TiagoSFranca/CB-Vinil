@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CBVinil.Common\CBVinil.Common.csproj" />
     <ProjectReference Include="..\CBVinil.Domain\CBVinil.Domain.csproj" />
     <ProjectReference Include="..\CBVinil.Persistence\CBVinil.Persistence.csproj" />
   </ItemGroup>
