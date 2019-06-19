@@ -3,7 +3,9 @@ using CBVinil.API.Filters;
 using CBVinil.Application.GenerosMusicais.Queries.GetGenerosMusicais;
 using CBVinil.Application.Settings;
 using CBVinil.Application.Settings.Models;
+using CBVinil.Application.Vendas.Commands.VenderDiscos;
 using CBVinil.Persistence;
+using FluentValidation.AspNetCore;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.AspNetCore.Builder;
@@ -51,7 +53,8 @@ namespace CBVinil.API
 
             services
                 .AddMvc(options => options.Filters.Add(typeof(CustomExceptionFilterAttribute)))
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<VenderDiscosCommandValidator>());
 
             services.AddDbContext<CBVinilContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CBVinilConnection")));

@@ -7,6 +7,7 @@ namespace CBVinil.Domain.Entities
         public GeneroMusical()
         {
             CashbackParametros = new HashSet<CashbackParametro>();
+            Discos = new HashSet<Disco>();
         }
 
         public int IdGeneroMusical { get; set; }
@@ -14,5 +15,6 @@ namespace CBVinil.Domain.Entities
         public string Descricao { get; set; }
 
         public virtual ICollection<CashbackParametro> CashbackParametros { get; set; }
+        public virtual ICollection<Disco> Discos { get; set; }
     }
 }

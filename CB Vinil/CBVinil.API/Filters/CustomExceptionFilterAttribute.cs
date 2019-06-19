@@ -9,44 +9,51 @@ namespace CBVinil.API.Filters
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class CustomExceptionFilterAttribute : ExceptionFilterAttribute
     {
+        private void MontarResponse(ref ExceptionContext context, int status, ResponseErrorViewModel objeto)
+        {
+            context.HttpContext.Response.ContentType = "application/json";
+            context.HttpContext.Response.StatusCode = status;
+
+            context.Result = new JsonResult(objeto);
+        }
+
+        private void MontarNotFound(ref ExceptionContext context)
+        {
+            var objeto = new ResponseNotFoundViewModel(context.Exception);
+            MontarResponse(ref context, (int)HttpStatusCode.NotFound, objeto);
+        }
+
+        private void MontarBadRequest(ref ExceptionContext context)
+        {
+            var objeto = new ResponseBadRequestViewModel(context.Exception);
+            MontarResponse(ref context, (int)HttpStatusCode.BadRequest, objeto);
+        }
+
+        private void MontarInternalServerError(ref ExceptionContext context)
+        {
+            var objeto = new ResponseUnauthorizedViewModel(context.Exception);
+            MontarResponse(ref context, (int)HttpStatusCode.InternalServerError, objeto);
+        }
+
         public override void OnException(ExceptionContext context)
         {
-            if (context.Exception is ValidationException)
+            if (context.Exception is ValidationException || context.Exception is BusinessException)
             {
-                context.HttpContext.Response.ContentType = "application/json";
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Result = new JsonResult(
-                    ((ValidationException)context.Exception).Failures);
-
-                return;
+                MontarBadRequest(ref context);
+            }
+            else if (context.Exception is NotFoundException)
+            {
+                MontarNotFound(ref context);
+            }
+            else if (context.Exception is PersistenceException)
+            {
+                MontarInternalServerError(ref context);
+            }
+            else
+            {
+                MontarInternalServerError(ref context);
             }
 
-            if (context.Exception is BusinessException)
-            {
-                context.HttpContext.Response.ContentType = "application/json";
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Result = new JsonResult(new
-                {
-                    error = new[] { context.Exception.Message }
-                });
-
-                return;
-            }
-
-            var code = HttpStatusCode.InternalServerError;
-
-            if (context.Exception is NotFoundException)
-            {
-                code = HttpStatusCode.NotFound;
-            }
-
-            context.HttpContext.Response.ContentType = "application/json";
-            context.HttpContext.Response.StatusCode = (int)code;
-            context.Result = new JsonResult(new
-            {
-                error = new[] { context.Exception.Message },
-                stackTrace = context.Exception.StackTrace
-            });
         }
     }
 }

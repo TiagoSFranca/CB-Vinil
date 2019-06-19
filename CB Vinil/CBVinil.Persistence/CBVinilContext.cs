@@ -15,6 +15,9 @@ namespace CBVinil.Persistence
         public DbSet<GeneroMusical> GeneroMusical { get; set; }
         public DbSet<DiaSemana> DiaSemana { get; set; }
         public DbSet<CashbackParametro> CashbackParametro { get; set; }
+        public DbSet<Disco> Disco { get; set; }
+        public DbSet<Venda> Venda { get; set; }
+        public DbSet<ItemVenda> ItemVenda { get; set; }
 
         #endregion
 

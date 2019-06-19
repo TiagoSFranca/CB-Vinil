@@ -28,16 +28,19 @@ namespace CBVinil.Persistence
         private void SeedCashbackParametro(CBVinilContext context)
         {
             context.CashbackParametro.AddRange(CashbackParametroSeed.Seeds);
+            context.SaveChanges();
         }
 
         private void SeedDiaSemana(CBVinilContext context)
         {
             context.DiaSemana.AddRange(DiaSemanaSeed.Seeds);
+            context.SaveChanges();
         }
 
         public void SeedGeneroMusical(CBVinilContext context)
         {
             context.GeneroMusical.AddRange(GeneroMusicalSeed.Seeds);
+            context.SaveChanges();
         }
     }
 }
