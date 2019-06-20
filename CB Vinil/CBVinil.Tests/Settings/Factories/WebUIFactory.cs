@@ -40,16 +40,16 @@ namespace CBVinil.Tests.Settings.Factories
                 using (var scope = sp.CreateScope())
                 {
                     var scopedServices = scope.ServiceProvider;
-                    var gCCartasContext = scopedServices.GetRequiredService<CBVinilContext>();
+                    var context = scopedServices.GetRequiredService<CBVinilContext>();
 
                     var logger = scopedServices.GetRequiredService<ILogger<WebUIFactory>>();
 
-                    gCCartasContext.Database.EnsureCreated();
+                    context.Database.EnsureCreated();
 
                     try
                     {
-                        _seed.Seed(gCCartasContext);
-                        gCCartasContext.SaveChanges();
+                        _seed.Seed(context);
+                        context.SaveChanges();
                     }
                     catch (Exception ex)
                     {

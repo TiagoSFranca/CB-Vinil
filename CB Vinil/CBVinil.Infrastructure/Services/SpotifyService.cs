@@ -125,40 +125,7 @@ namespace CBVinil.Infrastructure.Services
             {
                 try
                 {
-                    int offset = 1;
-                    var albunsFinal = new List<Album>();
-                    bool continuar = true;
-                    while (albunsFinal.Count < SpotifyConstants.MaxAlbuns && continuar)
-                    {
-                        var query = string.Format("q=genre%3A{0}&type=track&limit={1}&offset={2}", genero.ArgSpotify.ToLower(), SpotifyConstants.MaxAlbuns, offset);
-                        var url = _spotifySettings.SearchUrl + query;
-                        var consultaTrack = await GetSpotifyType<ConsultaTrack>(token, url);
-
-                        var albuns = consultaTrack?.tracks?.items?.Select(e => e.album).ToList();
-                        albuns = albuns.GroupBy(e => e.id).Select(e => e.FirstOrDefault()).ToList();
-
-                        var idAlbuns = albuns.Select(e => e.id).Distinct().ToList();
-
-                        if (idAlbuns.Count <= 0)
-                            continuar = false;
-
-                        var idDiscos = listaDiscos.Select(e => e.CodSpotify).Distinct().ToList();
-
-                        var idAlbunsFinais = albunsFinal.Select(e => e.id).Distinct().ToList();
-                        idAlbunsFinais.AddRange(idDiscos);
-                        idAlbunsFinais = idAlbunsFinais.Distinct().ToList();
-
-                        var idsExcept = idAlbuns.Except(idAlbunsFinais).ToList();
-
-                        var lista = albuns.Where(e => idsExcept.Contains(e.id)).ToList();
-
-                        albunsFinal.AddRange(lista);
-
-                        offset += SpotifyConstants.MaxAlbuns;
-                    }
-                    var ids = albunsFinal.Select(e => e.id).Distinct().ToList();
-                    albunsFinal = albunsFinal.Skip(0).Take(SpotifyConstants.MaxAlbuns).ToList();
-                    var discos = albunsFinal.Select(e => new Disco() { IdGeneroMusical = genero.IdGeneroMusical, Nome = e.name, CodSpotify = e.id, Preco = GerarPrecoRandom(), Artistas = string.Join(",", e.artists.Select(f => f.name).ToList()) }).ToList();
+                    var discos = await ObterListaDiscosPorGenero(token, genero, listaDiscos);
                     listaDiscos.AddRange(discos);
                 }
                 catch (Exception)
@@ -167,6 +134,46 @@ namespace CBVinil.Infrastructure.Services
             }
 
             return listaDiscos;
+        }
+
+        private async Task<List<Disco>> ObterListaDiscosPorGenero(string token, GeneroMusical genero, List<Disco> listaDiscos)
+        {
+            int offset = 1;
+            var albunsFinal = new List<Album>();
+            bool continuar = true;
+            while (albunsFinal.Count < SpotifyConstants.MaxAlbuns && continuar)
+            {
+                var query = string.Format("q=genre%3A{0}&type=track&limit={1}&offset={2}", genero.ArgSpotify.ToLower(), SpotifyConstants.MaxAlbuns, offset);
+                var url = _spotifySettings.SearchUrl + query;
+                var consultaTrack = await GetSpotifyType<ConsultaTrack>(token, url);
+
+                var albuns = consultaTrack?.tracks?.items?.Select(e => e.album).ToList();
+                albuns = albuns.GroupBy(e => e.id).Select(e => e.FirstOrDefault()).ToList();
+
+                var idAlbuns = albuns.Select(e => e.id).Distinct().ToList();
+
+                if (idAlbuns.Count <= 0)
+                    continuar = false;
+
+                var idDiscos = listaDiscos.Select(e => e.CodSpotify).Distinct().ToList();
+
+                var idAlbunsFinais = albunsFinal.Select(e => e.id).Distinct().ToList();
+                idAlbunsFinais.AddRange(idDiscos);
+                idAlbunsFinais = idAlbunsFinais.Distinct().ToList();
+
+                var idsExcept = idAlbuns.Except(idAlbunsFinais).ToList();
+
+                var lista = albuns.Where(e => idsExcept.Contains(e.id)).ToList();
+
+                albunsFinal.AddRange(lista);
+
+                offset += SpotifyConstants.MaxAlbuns;
+            }
+            var ids = albunsFinal.Select(e => e.id).Distinct().ToList();
+            albunsFinal = albunsFinal.Skip(0).Take(SpotifyConstants.MaxAlbuns).ToList();
+            var discos = albunsFinal.Select(e => new Disco() { IdGeneroMusical = genero.IdGeneroMusical, Nome = e.name, CodSpotify = e.id, Preco = GerarPrecoRandom(), Artistas = string.Join(",", e.artists.Select(f => f.name).ToList()) }).ToList();
+
+            return discos;
         }
 
         private decimal GerarPrecoRandom()

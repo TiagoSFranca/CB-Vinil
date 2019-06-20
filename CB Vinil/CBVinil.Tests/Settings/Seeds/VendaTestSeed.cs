@@ -1,4 +1,5 @@
 ﻿using CBVinil.Domain.Entities;
+using CBVinil.Domain.Seeds;
 using CBVinil.Persistence;
 using CBVinil.Tests.Settings.Interfaces;
 using System;
@@ -28,6 +29,10 @@ namespace CBVinil.Tests.Settings.Seeds
 
         public void Seed(CBVinilContext context)
         {
+            context.GeneroMusical.AddRange(GeneroMusicalSeed.Seeds);
+            context.DiaSemana.AddRange(DiaSemanaSeed.Seeds);
+            context.CashbackParametro.AddRange(CashbackParametroSeed.Seeds);
+            context.Disco.AddRange(DiscoTestSeed.Seeds);
             context.Venda.AddRange(Seeds);
         }
     }

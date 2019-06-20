@@ -21,13 +21,6 @@ namespace CBVinil.Application.Exceptions
         }
     }
 
-    public class ResponseUnauthorizedViewModel : ResponseErrorViewModel
-    {
-        public ResponseUnauthorizedViewModel(Exception exception) : base(exception)
-        {
-        }
-    }
-
     public class ResponseBadRequestViewModel : ResponseErrorViewModel
     {
         public ResponseBadRequestViewModel(Exception exception) : base(exception)

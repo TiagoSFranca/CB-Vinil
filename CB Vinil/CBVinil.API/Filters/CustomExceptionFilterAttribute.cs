@@ -31,7 +31,7 @@ namespace CBVinil.API.Filters
 
         private void MontarInternalServerError(ref ExceptionContext context)
         {
-            var objeto = new ResponseUnauthorizedViewModel(context.Exception);
+            var objeto = new ResponseInternalServerErrorViewModel(context.Exception);
             MontarResponse(ref context, (int)HttpStatusCode.InternalServerError, objeto);
         }
 
