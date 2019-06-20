@@ -62,8 +62,15 @@ Para executar os testes, acesse a raiz do repositório e siga os passos abaixo:
 
 ```
 cd "CB Vinil"
-dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*" 
+dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*%2C[CBVinil.Persistence]*%2C[CBVinil.Infrastructure]*"
 ```
+
+Os projetos abaixo foram remidos da coberturna por não serem testáveis
+```
+CBVinil.Persistence
+CBVinil.Infrastructure
+```
+
 ## Desenvolvido com
 
 * [.NET Core 2.2](https://docs.microsoft.com/pt-br/aspnet/core/?view=aspnetcore-2.2)
