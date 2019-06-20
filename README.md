@@ -65,7 +65,7 @@ cd "CB Vinil"
 dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*%2C[CBVinil.Persistence]*%2C[CBVinil.Infrastructure]*"
 ```
 
-Os projetos abaixo foram remidos da coberturna por não serem testáveis
+Os projetos abaixo foram removidos da cobertura por não possuirem nenhum código testável
 ```
 CBVinil.Persistence
 CBVinil.Infrastructure
