@@ -1,2 +1,7 @@
 language: csharp
+mono: none
+dotnet: 2.2.5
 solution: "./CB Vinil/CBVinil.API/CBVinil.API.csproj"
+script:
+  - dotnet restore
+  - dotnet test
