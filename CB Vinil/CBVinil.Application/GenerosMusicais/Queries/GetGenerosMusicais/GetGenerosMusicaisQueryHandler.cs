@@ -31,9 +31,6 @@ namespace CBVinil.Application.GenerosMusicais.Queries.GetGenerosMusicais
             if (!string.IsNullOrEmpty(request.Nome))
                 query = query.Where(e => e.Nome.ToLower().Contains(request.Nome.ToLower()));
 
-            if (!string.IsNullOrEmpty(request.Descricao))
-                query = query.Where(e => e.Descricao.ToLower().Contains(request.Descricao.ToLower()));
-
             var resultado = await query.ToListAsync();
 
             return _mapper.Map<List<GeneroMusicalViewModel>>(resultado);

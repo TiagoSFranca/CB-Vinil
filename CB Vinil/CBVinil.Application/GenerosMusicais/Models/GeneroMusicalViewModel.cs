@@ -4,6 +4,5 @@
     {
         public int IdGeneroMusical { get; set; }
         public string Nome { get; set; }
-        public string Descricao { get; set; }
     }
 }

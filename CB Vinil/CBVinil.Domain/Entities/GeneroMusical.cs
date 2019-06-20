@@ -12,7 +12,7 @@ namespace CBVinil.Domain.Entities
 
         public int IdGeneroMusical { get; set; }
         public string Nome { get; set; }
-        public string Descricao { get; set; }
+        public string ArgSpotify { get; set; }
 
         public virtual ICollection<CashbackParametro> CashbackParametros { get; set; }
         public virtual ICollection<Disco> Discos { get; set; }

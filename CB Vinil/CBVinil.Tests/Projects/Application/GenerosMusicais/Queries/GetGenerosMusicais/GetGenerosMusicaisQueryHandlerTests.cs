@@ -10,12 +10,12 @@ using Xunit;
 
 namespace CBVinil.Tests.Projects.Application.GenerosMusicais.Queries.GetGenerosMusicais
 {
-    public class GetGenerosMusicaisQueryHandlerTests : TestBase<DiscoTestSeed>
+    public class GetGenerosMusicaisQueryHandlerTests : TestBase<GeneroMusicalTestSeed>
     {
         private readonly GetGenerosMusicaisQueryHandler _queryHandler;
 
         public GetGenerosMusicaisQueryHandlerTests()
-            : base(new DiscoTestSeed())
+            : base(new GeneroMusicalTestSeed())
         {
             _queryHandler = new GetGenerosMusicaisQueryHandler(_context, _mapper);
         }
@@ -46,9 +46,6 @@ namespace CBVinil.Tests.Projects.Application.GenerosMusicais.Queries.GetGenerosM
 
             if (!string.IsNullOrEmpty(request.Nome))
                 query = query.Where(e => e.Nome.ToLower().Contains(request.Nome.ToLower()));
-
-            if (!string.IsNullOrEmpty(request.Descricao))
-                query = query.Where(e => e.Descricao.ToLower().Contains(request.Descricao.ToLower()));
 
             return query.Count();
         }

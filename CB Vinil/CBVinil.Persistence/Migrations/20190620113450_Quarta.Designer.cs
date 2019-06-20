@@ -4,14 +4,16 @@ using CBVinil.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CBVinil.Persistence.Migrations
 {
     [DbContext(typeof(CBVinilContext))]
-    partial class CBVinilContextModelSnapshot : ModelSnapshot
+    [Migration("20190620113450_Quarta")]
+    partial class Quarta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -8,6 +8,5 @@ namespace CBVinil.Application.GenerosMusicais.Queries.GetGenerosMusicais
     {
         public List<int> Ids { get; set; }
         public string Nome { get; set; }
-        public string Descricao { get; set; }
     }
 }

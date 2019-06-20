@@ -7,7 +7,7 @@ namespace CBVinil.Common.Helpers
     {
         public static string Encode(string plainText)
         {
-            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText ?? string.Empty);
             return Convert.ToBase64String(plainTextBytes);
         }
     }

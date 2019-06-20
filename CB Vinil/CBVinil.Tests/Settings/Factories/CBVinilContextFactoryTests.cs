@@ -14,11 +14,13 @@ namespace CBVinil.Tests.Settings.Factories
 
             var serviceProvider = new ServiceCollection()
                 .AddEntityFrameworkInMemoryDatabase()
+                .AddEntityFrameworkProxies()
                 .BuildServiceProvider();
 
             var options = new DbContextOptionsBuilder<CBVinilContext>()
                 .UseInMemoryDatabase(dbName)
                 .UseInternalServiceProvider(serviceProvider)
+                .UseLazyLoadingProxies()
                 .Options;
 
             var context = new CBVinilContext(options);

@@ -8,13 +8,12 @@ namespace CBVinil.API.Controllers
     public class GenerosMusicaisController : BaseController
     {
         [HttpGet]
-        public async Task<IActionResult> Search([FromQuery]List<int> ids, [FromQuery]string nome, [FromQuery]string descricao)
+        public async Task<IActionResult> Search([FromQuery]List<int> ids, [FromQuery]string nome)
         {
             GetGenerosMusicaisQuery query = new GetGenerosMusicaisQuery()
             {
                 Ids = ids,
-                Nome = nome,
-                Descricao = descricao
+                Nome = nome
             };
 
             return Ok(await Mediator.Send(query));

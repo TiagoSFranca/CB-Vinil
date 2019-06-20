@@ -130,7 +130,7 @@ namespace CBVinil.Infrastructure.Services
                     bool continuar = true;
                     while (albunsFinal.Count < SpotifyConstants.MaxAlbuns && continuar)
                     {
-                        var query = string.Format("q=genre%3A{0}&type=track&limit={1}&offset={2}", genero.Nome.ToLower(), SpotifyConstants.MaxAlbuns, offset);
+                        var query = string.Format("q=genre%3A{0}&type=track&limit={1}&offset={2}", genero.ArgSpotify.ToLower(), SpotifyConstants.MaxAlbuns, offset);
                         var url = _spotifySettings.SearchUrl + query;
                         var consultaTrack = await GetSpotifyType<ConsultaTrack>(token, url);
 

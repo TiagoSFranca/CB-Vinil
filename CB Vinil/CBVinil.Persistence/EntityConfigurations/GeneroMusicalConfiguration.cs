@@ -17,7 +17,8 @@ namespace CBVinil.Persistence.EntityConfigurations
                 .IsRequired()
                 .HasMaxLength(32);
 
-            builder.Property(e => e.Descricao)
+            builder.Property(e => e.ArgSpotify)
+                .IsRequired()
                 .HasMaxLength(32);
         }
     }
