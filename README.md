@@ -15,6 +15,36 @@ git clone https://github.com/TiagoSFranca/CB-Vinil.git
 ```
 
 ## Utilização
+É necessário que esteja instalado o [MS SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads), pois a aplicação utiliza migrações para criação e preenchimento da base de dados, cuja a string de conexão está em:
+```
+"CB Vinil"/CBVinil.API/appsettings.json
+"CBVinilConnection" no ramo "ConnectionStrings"
+```
+### Configurando a conexão com o banco
+Por padrão, a conexão com o banco está apontando para a base de dados local
+
+```
+"Server=localhost;Database=CBVinil;Trusted_Connection=True;Application Name=CBVinil;"
+```
+
+Caso seja necessário, alterar os dados da conexão de acordo
+
+```
+"Server=XXXXX;Database=XXXXX;User Id=XXXXX;Password=XXXXX;"
+Server= [DNS ou IP do servidor de banco de dados]
+Database= [Nome da base de dados]
+User Id= [Login]
+Password= [Senha]
+```
+Caso o banco não possua autenticação, a conexão não deve ter User Id e Password
+
+```
+"Server=XXXXX;Database=XXXXX;"
+Server= [DNS ou IP do servidor de banco de dados]
+Database= [Nome da base de dados]
+```
+
+### Inicializando o projeto
 Após o download, siga os passos abaixo
 ```
 cd "CB Vinil"
