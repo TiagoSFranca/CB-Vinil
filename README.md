@@ -40,5 +40,5 @@ dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*"
 * [EF Core](https://docs.microsoft.com/pt-br/ef/core/) - Acesso a dados
 * [LINQ](https://docs.microsoft.com/pt-br/dotnet/csharp/linq/) - Consulta de dados
 * [CQRS](https://docs.microsoft.com/pt-br/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/apply-simplified-microservice-cqrs-ddd-patterns)  - Segregação de Responsabilidades de consulta e escrita de dados
-* [Mediatr](https://github.com/jbogard/MediatR/wiki) - Plugin para aplicar o pattern [Mediator]()
+* [Mediatr](https://github.com/jbogard/MediatR/wiki) - Plugin para aplicar o pattern [Mediator](https://sourcemaking.com/design_patterns/mediator)
 * [XUnit](https://xunit.net/docs/getting-started/netcore/cmdline) - Framework de testes
