@@ -1,7 +1,7 @@
 language: csharp
 mono: none
 dotnet: 2.2
-solution: "./${PROJ_NAME}.API/${PROJ_NAME}.API.csproj"
+solution: "./CBVinil.API/CBVinil.API.csproj"
 stages:
     -build
     -test
@@ -9,9 +9,9 @@ jobs:
     include:
         -stage: build
         script:
-        - cd "${APP_NAME}"
+        - cd "CB Vinil"
         - dotnet build
         -stage: test
         script: 
-        - cd "${APP_NAME}"
+        - cd "CB Vinil"
         - dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*"
