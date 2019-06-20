@@ -14,4 +14,4 @@ jobs:
         -stage: test
         script: 
         - cd "CB Vinil"
-        - dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*"
+        - dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*%2C[CBVinil.Persistence]*%2C[CBVinil.Infrastructure]*"
