@@ -6,9 +6,9 @@ jobs:
     include:
         -stage: build
         script:
-        - cd "$APP_NAME"
+        - cd '$APP_NAME'
         - dotnet build
         -stage: test
         script: 
-        - cd "$APP_NAME"
+        - cd '$APP_NAME'
         - dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*"
