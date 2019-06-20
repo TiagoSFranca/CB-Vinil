@@ -8,10 +8,10 @@ stages:
 jobs:
     include:
         -stage: build
-            script:
-            - cd "{$APP_NAME}"
-            - dotnet build
+        script:
+        - cd "{$APP_NAME}"
+        - dotnet build
         -stage: test
-            script: 
-            - cd "{$APP_NAME}"
-            - dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*"
+        script: 
+        - cd "{$APP_NAME}"
+        - dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*"
