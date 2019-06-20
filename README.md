@@ -1,4 +1,5 @@
 # Cashback Vinil
+[![Build Status](https://travis-ci.org/TiagoSFranca/CB-Vinil.svg?branch=master)](https://travis-ci.org/TiagoSFranca/CB-Vinil)
 
 Cashback Vinil (CBVinil) é uma API  desenvolvida em .NET Core 2.2 para possibilitar a venda de Discos de Vinil com cashback para o comprador.
 

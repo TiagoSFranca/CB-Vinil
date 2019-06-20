@@ -18,7 +18,7 @@ namespace CBVinil.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(VendaViewModel))]
         [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ResponseBadRequestViewModel))]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError, Type = typeof(ResponseInternalServerErrorViewModel))]
-        public async Task<ActionResult<VendaViewModel>> GirarRodaFortuna(VenderDiscosCommand command)
+        public async Task<ActionResult<VendaViewModel>> VenderDiscos(VenderDiscosCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

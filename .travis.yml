@@ -1,0 +1,8 @@
+language: csharp
+mono: none
+dotnet: 2.2
+solution: "./CBVinil.API/CBVinil.API.csproj"
+script:
+  - cd "CB Vinil"
+  - dotnet build
+  - dotnet test /p:CollectCoverage=true /p:Exclude="[xunit.*]*"
