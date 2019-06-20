@@ -21,9 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBVinil.API", "CBVinil.API\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Common", "3 - Common", "{6D312D60-9B2A-4030-AE84-C0F80465FA54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBVinil.Common", "CBVinil.Common\CBVinil.Common.csproj", "{795679B6-5E60-4277-966E-E491B3D4FF27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBVinil.Common", "CBVinil.Common\CBVinil.Common.csproj", "{795679B6-5E60-4277-966E-E491B3D4FF27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBVinil.Infrastructure", "CBVinil.Infrastructure\CBVinil.Infrastructure.csproj", "{42596CD0-7F70-4357-9825-EF3E5C03C1BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBVinil.Infrastructure", "CBVinil.Infrastructure\CBVinil.Infrastructure.csproj", "{42596CD0-7F70-4357-9825-EF3E5C03C1BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1DD95B01-ACDE-4D4A-8727-2B2F44A54433}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBVinil.Tests", "CBVinil.Tests\CBVinil.Tests.csproj", "{9DBD2E2B-97D5-4F1F-A6F6-7812B3837455}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{42596CD0-7F70-4357-9825-EF3E5C03C1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42596CD0-7F70-4357-9825-EF3E5C03C1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42596CD0-7F70-4357-9825-EF3E5C03C1BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DBD2E2B-97D5-4F1F-A6F6-7812B3837455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DBD2E2B-97D5-4F1F-A6F6-7812B3837455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DBD2E2B-97D5-4F1F-A6F6-7812B3837455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DBD2E2B-97D5-4F1F-A6F6-7812B3837455}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +78,7 @@ Global
 		{6D312D60-9B2A-4030-AE84-C0F80465FA54} = {39765921-F28C-435C-9482-9AE6215A697D}
 		{795679B6-5E60-4277-966E-E491B3D4FF27} = {6D312D60-9B2A-4030-AE84-C0F80465FA54}
 		{42596CD0-7F70-4357-9825-EF3E5C03C1BB} = {B63C33DB-2AF8-4CED-BF9A-A2803AFB5B28}
+		{9DBD2E2B-97D5-4F1F-A6F6-7812B3837455} = {1DD95B01-ACDE-4D4A-8727-2B2F44A54433}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D4218FD8-34C8-43E9-B8A9-FB12195D8991}
